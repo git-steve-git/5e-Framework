@@ -2,25 +2,10 @@
 
 A comprehensive 5th Edition Dungeons & Dragons Framework for MapTool with character sheet and character creation tools, a compendium of items, features, spells and creatures and campaign management tools.
 
-## Download
+Made by rtakehara.  It's an amazing framework and I highly recommend checking out his main branch for the latest updates as well as tutorials, etc.  Don't forget to check out his Patreon if you want to reward his fantastic work!
 
-The latest version is [5e Framework v2.5.6](https://github.com/rtakehara/5e-Framework/blob/master/Versions/5e%20Framework%202.5.6.cmpgn?raw=true). This version requires MapTool version 1.7 or newer.
+## Forkables
 
-Check the [Getting Started](https://github.com/rtakehara/5e-Framework/wiki#getting-started) to learn the basics, or the [Changelog](https://github.com/rtakehara/5e-Framework/wiki/Changelog) to see what's new.
+The main reason for this fork is to clean up the Equipment tables for use with my imported items.  The way I choose to format item descriptions is not exactly the same as the way he does it, and I've found a few glitches with they way they are subsequently displayed in the main branch.  Sometimes items are assigned to incorrect areas (Wand of Orcus showing up in the Armor table) or just all over (Apparatus of Kwalish is EVERYWHERE!)
 
-![screenshot](https://github.com/rtakehara/5e-Framework/blob/master/Resources/Wiki/Screenshot_Cover.png)
-
-## Wiki
-
-Visit the [wiki](https://github.com/rtakehara/5e-Framework/wiki) for more in depth information, help and tutorials.
-
-**Help**
-
-- [Video Tutorials](https://github.com/rtakehara/5e-Framework/wiki/Video-Tutorials)
-- [FAQ](https://github.com/rtakehara/5e-Framework/wiki/FAQ)
-- [Troubleshooting](https://github.com/rtakehara/5e-Framework/wiki/Troubleshooting)
-- [MapTool](https://github.com/rtakehara/5e-Framework/wiki/MapTool)
-
-**Support Me**
-
-If you want to support me, you can join my [Patreon](https://www.patreon.com/rtakehara) and access the maps I make, or you can commission a digital map or artwork.
+The issue appears to stem from the fact that the macros use regex that scans the whole item description looking for keywords, and sometimes I suppose those regexes find a match when they shouldn't.  When importing items myself, I add an additional field in the JSON object which explicitly IDs the item type, and I've altered the macros that built the Equipment table to look for those tags instead.
